@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="jp">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>フラッピーバード</title>
+        <link rel="stylesheet" href="./reset.css">
+        </style>
+        <link rel="stylesheet" href="./stylesheet.css">
+        </style>
+    </head>
+    <body>
+        <canvas width="100" height="100" id="MainCanvas"></canvas>
+        <div id="wrapper">
+            <div id="menu" class="popup">
+                <h1>FLAPPYBIRD</h1>
+                <h2>
+                    HIGH SCORE:
+                    <span class="highScoreValue">0</span>
+                </h2>
+                <input type="button" value="START" id="startButton" onclick="gameStart()" >
+            </div>
+            <div id="game">
+                <div id="score">
+                    <span id="scoreValue">0</span>
+                </div>
+                <div id="gameEnd" class="popup" style="display: none;">
+                    <h1>GAME OVER</h1>
+                    <h2>
+                        SCORE:
+                        <span class="ScoreValue">0</span><br>
+                        HIGH SCORE:
+                        <span class="HighScoreValue">0</span><br>
+                        TIME:
+                        <span class="TimeValue">0</span>
+                    </h2>
+                    <input type="button" value="RETRY" id="retryButton" onclick="backMenu()" >
+                </div>
+            </div>
+        </div>
+        <script src="./modules.js"></script>
+        <script src="./main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+[submodule "demo-breakout"]
+	path = demo-breakout
+	url = https://github.com/HareK02/breakout.git
+[submodule "demo-flappybird"]
+	path = demo-flappybird
+	url = https://github.com/HareK02/flappybird.git
