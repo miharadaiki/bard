@@ -28,9 +28,20 @@ function backMenu() {
     document.querySelector("#game").style.display = "none";
     document.querySelector("#gameEnd").style.display = "none";
 }
-
+const piperate = 50; //パイプの間隔 [tick]
+const pipeheight = 250; //パイプの隙間 [px]
+const pipespeed = 10; //パイプの速度 [px/tick]
+const piperandomize = 300; //前回の隙間の位置からのランダムなズレ [px]
+const pipegaprange = 400; //隙間の発生する範囲 [px]
+let rate = 0;
+let lastpipepos = GameArea.y / 2;
+let pipes = [];
 function update() {
-    
+    if (IsGameRunning) {
+        if 
+        
+        
+
 }
 
 //ゲームループの定義・開始
