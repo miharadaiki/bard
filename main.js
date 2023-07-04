@@ -38,7 +38,57 @@ let lastpipepos = GameArea.y / 2;
 let pipes = [];
 function update() {
     if (IsGameRunning) {
-        if 
+        if (rate % piperate === 0) {
+            let center = Math.min(
+                Math.max(
+                    GameArea.y / 2 - pipegaprange / 2,
+                    Math.round(lastpipepos + (Math.random() - 0.5) * piperandomize)
+                ),
+                GameArea.y / 2 + pipegaprange / 2
+            );    
+            lastpipepos = center;
+            pipes.push(
+                new CanvasComponents({
+                    ctx: MainContext,
+                    img: "assets/pipe_top.png",
+                    size: new Vector2(100, 400),
+                    position: new Vector2(GameArea.x, center - pipeheight / 2 - 200),
+                    update: function () {
+                        this.position.x -= pipespeed;
+
+                        if(
+                            (character.position.x > this.position.x - this.size.x / 2 - character.size.x / 2 &&
+                                character.position.x < this.position.x + this.size.x / 2 + character.size.x / 2 &&
+                                character.position.y > this.position.y - this.size.y / 2 &&
+                                character.position.y < this.position.y + this.size.y / 2) ||
+
+                            (character.position.x > this.position.x - this.size.x / 2 &&
+                                character.position.x < this.position.x + this.size.x / 2 &&
+                                character.position.y > this.position.y - this.size.y / 2 - character.size.y / 2 &&
+                                character.position.y < this.position.y + this.size.y / 2 + character.size.y / 2)  
+                        ) {
+                            gameOver();
+                        }    
+                        if (this.position.x < -this.size.x / 2) {
+                            pipes.splice(pipes.indexOf(this), 1);
+                        }  
+                    }
+                })
+            ); 
+            pipes.push(
+                new CanvasComponents({
+                    ctx: MainContext,
+                    img: "assets/pipe_bottom.png",
+                    size: new Vector2(100, 400),
+                    position: new Vector2(GameArea.x, center + pipeheight / 2 + 200),
+                    motion: new Vector2(-pipespeed, 0),
+                    update: function () {
+                        this.position.x -= pipespeed;
+                
+                               
+                            
+            }
+    }    
         
         
 
