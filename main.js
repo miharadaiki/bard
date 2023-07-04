@@ -8,6 +8,42 @@ GameArea.refresh();
 
 let IsGameRunning = false;
 
+const character = new CanvasComponents({
+    ctx: MainContext,
+    img: "assets/bird.png",
+    size: new Vector2(80, 80),
+    position: new Vector2(GameArea.x / 4, GameArea.y / 2),
+    motion: new Vector2(0, 0),
+    update: function () {
+        if(IsGameRunning){
+            //↓重力
+            if (this.motion.y < 20) {
+                this.motion.y += 2;
+            }
+            //↓動き
+            this.position = this.position.add(this.motion);
+            //↓回転
+            this.rotate = this.motion.y * 2;
+            //↓下ゲームオーバー
+            if (this.position.y > GameArea.y + this.size.y / 2) {
+                gameOver();
+            }
+            //↓上ゲームオーバー
+            if (this.position.y < (.0) - this.size.y / 2) {
+                gameOver();
+            }
+        }
+    }
+});
+//↓スペースが下がっている
+window.addEventListener("keydown", (e) => {
+    //↓もしスペースが押される＆連続ではない＆ゲームが始まっている
+    if (e.key === " " && e.repeat === false && IsGameRunning) {
+        character.motion.y = -20;
+        Sound.PlaySound("jump");
+    }
+});
+
 Sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
 function gameStart() {
