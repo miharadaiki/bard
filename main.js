@@ -63,6 +63,7 @@ function backMenu() {
     document.querySelector("#menu").style.display = "block";
     document.querySelector("#game").style.display = "none";
     document.querySelector("#gameEnd").style.display = "none";
+    character.position(GameArea.x / 4, GameArea.y / 2);
 }
 const piperate = 50; //パイプの間隔 [tick]
 const pipeheight = 250; //パイプの隙間 [px]
