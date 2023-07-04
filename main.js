@@ -120,14 +120,31 @@ function update() {
                     motion: new Vector2(-pipespeed, 0),
                     update: function () {
                         this.position.x -= pipespeed;
-                
-                               
-                            
-            }
-    }    
-        
-        
+                        if (
+                            //横長の判定
+                            (character.position.x > this.position.x - this.size.x / 2 - character.size.x / 2 &&
+                                character.position.x < this.position.x + this.size.x / 2 + character.size.x / 2 &&
+                                character.position.y > this.position.y - this.size.y / 2 &&
+                                character.position.y < this.position.y + this.size.y / 2) ||
+                            //縦長の判定
+                            (character.position.x > this.position.x - this.size.x / 2 &&
+                                character.position.x < this.position.x + this.size.x / 2 &&
+                                character.position.y > this.position.y - this.size.y / 2 - character.size.y / 2 &&
+                                character.position.y < this.position.y + this.size.y / 2 + character.size.y / 2)
+                        ) {
+                            gameOver();
+                        }
 
+                        //パイプが画面外に出たら削除
+                        if (this.position.x < -this.size.x / 2) {
+                            pipes.splice(pipes.indexOf(this), 1);
+                        }
+                    }
+                })                  
+                            
+            )
+        }
+    }    
 }
 
 //ゲームループの定義・開始
