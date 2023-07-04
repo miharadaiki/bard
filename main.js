@@ -145,6 +145,7 @@ function update() {
                             
             )
         }
+        rate ++ 
     }    
 }
 
