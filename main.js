@@ -92,24 +92,28 @@ function update() {
                     position: new Vector2(GameArea.x, center - pipeheight / 2 - 200),
                     update: function () {
                         this.position.x -= pipespeed;
+                        if(IsGameRunning){
+                            if(
+                                (character.position.x > this.position.x - this.size.x / 2 - character.size.x / 2 &&
+                                    character.position.x < this.position.x + this.size.x / 2 + character.size.x / 2 &&
+                                    character.position.y > this.position.y - this.size.y / 2 &&
+                                    character.position.y < this.position.y + this.size.y / 2) ||
 
-                        if(
-                            (character.position.x > this.position.x - this.size.x / 2 - character.size.x / 2 &&
-                                character.position.x < this.position.x + this.size.x / 2 + character.size.x / 2 &&
-                                character.position.y > this.position.y - this.size.y / 2 &&
-                                character.position.y < this.position.y + this.size.y / 2) ||
+                                (character.position.x > this.position.x - this.size.x / 2 &&
+                                    character.position.x < this.position.x + this.size.x / 2 &&
+                                    character.position.y > this.position.y - this.size.y / 2 - character.size.y / 2 &&
+                                    character.position.y < this.position.y + this.size.y / 2 + character.size.y / 2)  
+                            ) {
+                                gameOver();
+                            }    
+                            if (this.position.x < -this.size.x / 2) {
+                                pipes.splice(pipes.indexOf(this), 1);
 
-                            (character.position.x > this.position.x - this.size.x / 2 &&
-                                character.position.x < this.position.x + this.size.x / 2 &&
-                                character.position.y > this.position.y - this.size.y / 2 - character.size.y / 2 &&
-                                character.position.y < this.position.y + this.size.y / 2 + character.size.y / 2)  
-                        ) {
-                            gameOver();
-                        }    
-                        if (this.position.x < -this.size.x / 2) {
-                            pipes.splice(pipes.indexOf(this), 1);
-                        }  
+
+                            }  
+                        }
                     }
+
                 })
             ); 
             pipes.push(
@@ -121,24 +125,26 @@ function update() {
                     motion: new Vector2(-pipespeed, 0),
                     update: function () {
                         this.position.x -= pipespeed;
-                        if (
-                            //横長の判定
-                            (character.position.x > this.position.x - this.size.x / 2 - character.size.x / 2 &&
-                                character.position.x < this.position.x + this.size.x / 2 + character.size.x / 2 &&
-                                character.position.y > this.position.y - this.size.y / 2 &&
-                                character.position.y < this.position.y + this.size.y / 2) ||
-                            //縦長の判定
-                            (character.position.x > this.position.x - this.size.x / 2 &&
-                                character.position.x < this.position.x + this.size.x / 2 &&
-                                character.position.y > this.position.y - this.size.y / 2 - character.size.y / 2 &&
-                                character.position.y < this.position.y + this.size.y / 2 + character.size.y / 2)
-                        ) {
-                            gameOver();
-                        }
+                        if(IsGameRunning){
+                            if (
+                                //横長の判定
+                                (character.position.x > this.position.x - this.size.x / 2 - character.size.x / 2 &&
+                                    character.position.x < this.position.x + this.size.x / 2 + character.size.x / 2 &&
+                                    character.position.y > this.position.y - this.size.y / 2 &&
+                                    character.position.y < this.position.y + this.size.y / 2) ||
+                                //縦長の判定
+                                (character.position.x > this.position.x - this.size.x / 2 &&
+                                    character.position.x < this.position.x + this.size.x / 2 &&
+                                    character.position.y > this.position.y - this.size.y / 2 - character.size.y / 2 &&
+                                    character.position.y < this.position.y + this.size.y / 2 + character.size.y / 2)
+                            ) {
+                                gameOver();
+                            }
 
                         //パイプが画面外に出たら削除
-                        if (this.position.x < -this.size.x / 2) {
-                            pipes.splice(pipes.indexOf(this), 1);
+                            if (this.position.x < -this.size.x / 2) {
+                                pipes.splice(pipes.indexOf(this), 1);
+                            }
                         }
                     }
                 })                  
