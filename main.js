@@ -43,7 +43,7 @@ window.addEventListener("keydown", (e) => {
         Sound.PlaySound("jump");
     }
 });
-
+Sound.LoadSound("jump", "assets/jump.mp3");
 Sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
 function gameStart() {
