@@ -159,3 +159,4 @@ const GameLoop = new GameLoopManager(() => {
     update();
 }, 30);
 GameLoop.start();
+
