@@ -55,6 +55,7 @@ function gameStart() {
 
 function gameOver() {
     document.querySelector("#gameEnd").style.display = "block";
+    Sound.PlaySound("hit");
     IsGameRunning = false;
 }
 
@@ -166,3 +167,9 @@ const GameLoop = new GameLoopManager(() => {
 }, 30);
 GameLoop.start();
 
+const hoge = (arg) => {
+    console.log(arg + "は何度も表示されます");
+  };
+  //hoge関数に引数を渡して１秒ごとに実行
+  setInterval(hoge, 1000, "これ");
+  
