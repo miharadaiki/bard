@@ -28,7 +28,8 @@ const character = new CanvasComponents({
             this.rotate = this.motion.y * 2;
 
             //画面外に出たらゲームオーバー
-            if (this.position.y > GameArea.y - this.size.y / 2) {
+            if (this.position.y > GameArea.y - this.size.y / 2)
+             {
                 gameOver();
             }
         }
